@@ -1,0 +1,19 @@
+
+.card { 
+  margin-bottom: 30px;
+}
+
+.card-img-top { 
+  height: 150px;
+}
+
+.card-footer {
+  padding: 0;
+  background: #fff;
+}
+
+.card-footer button {
+  background-color: #ef251f;
+  cursor: pointer;
+  text-transform: uppercase;
+}

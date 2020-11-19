@@ -1,0 +1,46 @@
+<h1>Order History</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders$ | async">
+      <td>{{ order.shipping.name }}</td>
+      <td>{{ order.datePlaced | date }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" (click)="open(content)">
+          View Order
+        </button>
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Order Details</h4>
+          </div>
+          
+          <div class="modal-body">
+            <div class="container">
+              <h5>Shipping Address</h5>
+              <p>Name: {{ order.shipping.name }}</p>
+              <p>Address Line 1: {{ order.shipping.addressLine1 }}</p>
+              <p>Address Line 2: {{ order.shipping.addressLine2 }}</p>
+              <p>City: {{ order.shipping.city }}</p>
+            </div>
+            <h5>Items ordered</h5>
+            <ul class="list-group" *ngFor="let item of order.items">
+              <li class="list-group-item" style="border: none">
+                {{ item.product.title }} x {{ item.quantity }} =
+                {{ item.totalPrice | currency: "USD":true }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="modal-footer"></div>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

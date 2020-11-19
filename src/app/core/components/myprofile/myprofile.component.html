@@ -1,0 +1,25 @@
+<h2>My Profile</h2>
+
+<div class="col-4 mx-auto">
+  <div class="card" style="width: 18rem">
+    <img
+      class="card-img-top"
+      src="../../../../assets/img/userProfilePicture.png"
+      alt="Logo"
+    />
+    <div class="card-body" *ngIf="this.authService.user$ | async as user">
+      <h5 class="card-title">{{ user.displayName }}</h5>
+      <p class="card-text">
+        {{ user.email }}
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-3">
+    <a
+      class="btn btn-outline-danger my-2 my-sm-0 mr-5"
+      [routerLink]="['/my/orders']"
+      >View your orders</a
+    >
+  </div>
+</div>
